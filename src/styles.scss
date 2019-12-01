@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+* {
+  font-family: "Prompt", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: unset !important;
+}
+
+// body.swal2-height-auto {
+//   all: unset !important;
+// }
+
+.material-icons {
+  font-family: "Material Icons" !important;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed !important;
+}
+
+.spinner-circle {
+  position: fixed !important;
+}
+
+.mat-list-item {
+  height: 40px !important;
+}
