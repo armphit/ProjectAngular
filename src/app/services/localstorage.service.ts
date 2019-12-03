@@ -14,15 +14,15 @@ export class LocalstorageService {
   constructor() {}
 
   get = (key: string): any => {
-    if (window.localStorage.getItem(`${"sqlchecking_"}${key}`)) {
-      return _localStorage.get(`${"sqlchecking_"}${key}`);
+    if (window.localStorage.getItem(`${"armstorage_"}${key}`)) {
+      return _localStorage.get(`${"armstorage_"}${key}`);
     } else {
       return null;
     }
   };
 
   set = (key: string, data: any): void => {
-    _localStorage.set(`${"sqlchecking_"}${key}`, data);
+    _localStorage.set(`${"armstorage_"}${key}`, data);
   };
 
   clear = (): void => {

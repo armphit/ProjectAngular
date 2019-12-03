@@ -6,28 +6,22 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class HttpService {
-  private rootAPI: string =
-    "http://www.cpe.rmuti.ac.th/project/sqlchecking/api/";
+  private rootAPI: string = "http://127.0.0.1/test12/";
 
   constructor(
     private http: HttpClient,
     private localStorage: LocalstorageService
   ) {}
 
-  public get = (path: string, queryParms: string = "") => {
+  public get = (path: string) => {
     return new Promise(resolve => {
       this.http
-        .get(
-          `${this.rootAPI}${path}${queryParms.length > 0 ? queryParms : ""}`,
-          {
-            headers: {
-              Authorization:
-                this.localStorage.get("userlogin") != null
-                  ? this.localStorage.get("userlogin")["token"]
-                  : "null"
-            }
+        .get(`${this.rootAPI}${path}`, {
+          headers: {
+            Authorization:
+              this.localStorage.get("userlogin") != null ? "null" : "null"
           }
-        )
+        })
         .toPromise()
         .then(value => {
           resolve({ connect: true, value: value });

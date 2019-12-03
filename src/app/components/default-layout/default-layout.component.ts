@@ -34,8 +34,6 @@ export class DefaultLayoutComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // cssRoot.style.setProperty("--dl-sidebar-width", "270px");
-    // cssRoot.style.setProperty("--dl-sidebar-width", "270px");
     screenMatch(value => {
       this.stateScreen = { sidebarShow: value, displayMatch: value };
 
@@ -56,19 +54,16 @@ export class DefaultLayoutComponent implements OnInit {
       );
     });
 
-    console.log(this.localStorage.get("userlogin"));
-    if (this.localStorage.get("userlogin")["password"] == false) {
-      this.alert.alert("warning", "โปรดเปลี่ยนรหัสผ่านของท่าน");
-    }
-
     if (
       window.location.pathname == "/" ||
       window.location.pathname == "/project/sqlchecking/"
     ) {
       this.router.navigate([
-        this.localStorage.get("userlogin")["role"] == "4500"
+        this.localStorage.get("userlogin")["status"] == "Admin"
+          ? "/admin"
+          : this.localStorage.get("userlogin")["status"] == "Student"
           ? "/student"
-          : "teacher"
+          : ""
       ]);
     }
   }
@@ -98,18 +93,8 @@ export class DefaultLayoutComponent implements OnInit {
       .then(async (value: boolean) => {
         if (value == true) {
           this.service.loadingState = true;
-          let httpResponse = await this.http.get(
-            "login/onLogout",
-            `?username=${this.localStorage.get("userlogin")["username"]}`
-          );
-          console.log(httpResponse);
+          this.router.navigate(["/login"]);
           this.localStorage.clear();
-          window.location.replace(
-            "http://www.cpe.rmuti.ac.th/project/sqlchecking/sso/index.php?slo&redirect=" +
-              window.location.hostname.includes("localhost")
-              ? "http://localhost:1000/login"
-              : "http://www.cpe.rmuti.ac.th/project/sqlchecking/login"
-          );
           this.service.loadingState = false;
         }
       });

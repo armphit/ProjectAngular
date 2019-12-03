@@ -1,5 +1,3 @@
-import { StudentGuard } from "./guards/student.guard";
-import { TeacherGuard } from "./guards/teacher.guard";
 import { AppService } from "./services/app.service";
 import { AlertService } from "./services/alert.service";
 import { AppGuard } from "./guards/app.guard";
@@ -21,7 +19,7 @@ import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from "@angular/material/core";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { DefaultLayoutComponent } from "./components/default-layout/default-layout.component";
 import { RecaptchaModule } from "ng-recaptcha";
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ChangePasswordComponent } from "./components/change-password/change-password.component";
 
 @NgModule({
   declarations: [
@@ -69,8 +67,6 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     },
     AppService,
     AppGuard,
-    TeacherGuard,
-    StudentGuard,
     HttpService,
     AlertService,
     LocalstorageService

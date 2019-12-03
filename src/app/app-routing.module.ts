@@ -1,6 +1,4 @@
 import { ChangePasswordComponent } from "./components/change-password/change-password.component";
-import { TeacherGuard } from "./guards/teacher.guard";
-import { StudentGuard } from "./guards/student.guard";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AppGuard } from "./guards/app.guard";
@@ -15,8 +13,16 @@ const routes: Routes = [
     canActivate: [AppGuard],
     children: [
       {
+        path: "changePassword",
+        component: ChangePasswordComponent
+      },
+      {
+        path: "admin",
+        loadChildren: () =>
+          import("./components/admin/admin.module").then(m => m.AdminModule)
+      },
+      {
         path: "student",
-        canActivate: [StudentGuard],
         loadChildren: () =>
           import("./components/student/student.module").then(
             m => m.StudentModule
@@ -24,15 +30,15 @@ const routes: Routes = [
       },
       {
         path: "teacher",
-        canActivate: [TeacherGuard],
         loadChildren: () =>
           import("./components/teacher/teacher.module").then(
             m => m.TeacherModule
           )
       },
       {
-        path: "changePassword",
-        component: ChangePasswordComponent
+        path: "header",
+        loadChildren: () =>
+          import("./components/header/header.module").then(m => m.HeaderModule)
       }
     ]
   },

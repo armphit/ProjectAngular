@@ -46,15 +46,6 @@
                     />
                   </mat-form-field>
                 </div>
-                <div>
-                  <re-captcha
-                    #captchaRef
-                    *ngIf="showCapcha"
-                    (resolved)="captcha($event)"
-                    [siteKey]="captchaSitekey"
-                    class="text-center"
-                  ></re-captcha>
-                </div>
               </div>
             </div>
 
@@ -64,7 +55,7 @@
                   <button
                     type="submit"
                     class="btn btn-primary"
-                    [disabled]="formLogin.valid ? dataCaptcha == null : true"
+                    [disabled]="formLogin.invalid"
                   >
                     เข้าสู่ระบบ
                   </button>
@@ -87,11 +78,7 @@
 
               <div class="mb-3">
                 <span style="margin: 0px 5px 0px 5px;">
-                  <button
-                    type="button"
-                    class="btn btn-warning"
-                    (click)="loginSSO()"
-                  >
+                  <button type="button" class="btn btn-warning">
                     เข้าสู่ระบบด้วยบัญชีอินเตอร์เน็ต มทร.อีสาน
                   </button>
                 </span>

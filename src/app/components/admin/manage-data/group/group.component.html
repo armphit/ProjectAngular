@@ -1,0 +1,181 @@
+<br /><br /><button
+  mat-flat-button
+  color="warn"
+  data-toggle="modal"
+  data-target="#insertGroupModal"
+>
+  <mat-icon style="size: 50px"> add_box </mat-icon>&nbsp;เพิ่มกลุ่มเรียน
+</button>
+
+<mat-form-field
+  class="example-full-width"
+  style="float: right;width: 500px;padding-right: 50px;"
+>
+  <input matInput placeholder="ค้นหา" #se_gr />
+  <mat-icon matSuffix style="font-size: 1.2em">search</mat-icon>
+</mat-form-field>
+<br /><br />
+
+<table class="table table-striped" *ngIf="datagroupchange1 != null">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">กลุ่มเรียน</th>
+      <th scope="col">สาขาวิชา</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let i of onsearchgroup(datagroupchange1, se_gr.value);
+        let x = index
+      "
+    >
+      <th scope="row">{{ x + 1 }}</th>
+      <td>
+        {{ i.study_group_name }}
+      </td>
+      <td>{{ i.name_th }}</td>
+      <td>
+        <span>
+          <button
+            mat-button
+            color="link"
+            data-toggle="modal"
+            data-target="#UpdateGroupModal"
+          >
+            <mat-icon> update </mat-icon>
+          </button></span
+        >
+
+        <span>
+          <button mat-button color="warn">
+            <mat-icon> delete </mat-icon>
+          </button></span
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="insertGroupModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="insertGroupModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="insertGroupModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>เพิ่มกลุ่มเรียน</p>
+
+        <label>State</label>
+        <select class="form-control" *ngIf="datamajor" style="width: 100%">
+          <option> โปรดเลือกสาขาวิชา </option>
+          <option
+            *ngFor="let i of datamajor; let x = index"
+            [value]="i.name_th"
+            change="namegroup"
+            >{{ i.name_th }}</option
+          >
+        </select>
+
+        <!-- <mat-form-field *ngIf="datamajor" tyle="width: 500%;">
+          <mat-label>สาขาวิชา</mat-label>
+          <mat-select value="{{ '' }}" #selectV>
+            <mat-option>
+              {{ "โปรดเลือกสาขาวิชา" }}
+            </mat-option>
+            <mat-option
+              *ngFor="let i of datamajor; let x = index"
+              [value]="i.name_th"
+              (click)="namegroupch(i.acronym, i.code, i.name_th)"
+            >
+              {{ i.name_th }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        <br />
+
+        <span> {{ namegroup }}</span
+        >&nbsp;&nbsp;.&nbsp;&nbsp;
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="โปรดระบุรหัสกลุ่มเรียน"
+            #a
+            maxlength="5"
+          />
+        </mat-form-field>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="UpdateGroupModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="UpdateGroupModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="UpdateGroupModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>แก้ไขกลุ่มเรียน</p>
+        <!-- สาขาวิชา :
+        {{ name_th }}
+        <br /><br />
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="โปรดระบุรหัสกลุ่มเรียน"
+            #a
+            maxlength="10"
+            value="{{ study_group_name }}"
+          />
+        </mat-form-field> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

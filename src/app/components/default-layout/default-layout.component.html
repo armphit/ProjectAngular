@@ -15,7 +15,7 @@
       </button>
     </div>
 
-    <div class="text-center" style="padding:15px;background-color: #007BFF;">
+    <div class="text-center" style="padding:15px;background-color: #fff;">
       <div class="text-center">
         <img
           src="./assets/RMUTi_LOGO.png"
@@ -24,94 +24,26 @@
           class="mb-2"
         />
         <h6 class="mb-1 text-white">
-          {{ localStorage.get("userlogin")["prename"]
+          <!-- {{ localStorage.get("userlogin")["prename"]
           }}{{ localStorage.get("userlogin")["fname"] }}&nbsp;{{
             localStorage.get("userlogin")["lname"]
-          }}
+          }} -->
         </h6>
-        <h6
-          class="text-white"
-          *ngIf="localStorage.get('userlogin')['role'] == '4500'"
-        >
-          {{ localStorage.get("userlogin")["studentId"] }}
-        </h6>
-      </div>
-    </div>
-    <div *ngIf="localStorage">
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="localStorage.get('userlogin')['password'] == false"
-      >
-        โปรดเปลี่ยนรหัสผ่านของท่าน
       </div>
     </div>
     <mat-nav-list>
       <a
         mat-list-item
         href="javascript:void(0)"
-        *ngIf="localStorage.get('userlogin')['role'] == '4500'"
-        [routerLink]="['/student/group']"
+        [routerLink]="['/admin/manage-data']"
         [routerLinkActive]="['link-active']"
         (click)="stateScreen.displayMatch == false ? sidebarChange() : ''"
       >
         <span style="display: inline-block;width: 30px;">
-          <i class="fas fa-users"></i>
+          <i class="fas fa-key"></i>
         </span>
-        กลุ่มเรียนของฉัน</a
-      >
-      <a
-        mat-list-item
-        href="javascript:void(0)"
-        *ngIf="localStorage.get('userlogin')['role'] == '4500'"
-        [routerLink]="['/student/test']"
-        [routerLinkActive]="['link-active']"
-        (click)="stateScreen.displayMatch == false ? sidebarChange() : ''"
-      >
-        <span style="display: inline-block;width: 30px;">
-          <i class="fas fa-sticky-note"></i>
-        </span>
-        การสอบ</a
-      >
-      <a
-        mat-list-item
-        href="javascript:void(0)"
-        *ngIf="localStorage.get('userlogin')['role'] == '4500'"
-        [routerLink]="['/student/history']"
-        [routerLinkActive]="['link-active']"
-        (click)="stateScreen.displayMatch == false ? sidebarChange() : ''"
-      >
-        <span style="display: inline-block;width: 30px;">
-          <i class="fas fa-history"></i>
-        </span>
-        ประวัติการสอบ</a
-      >
-      <a
-        mat-list-item
-        href="javascript:void(0)"
-        *ngIf="localStorage.get('userlogin')['role'] != '4500'"
-        [routerLink]="['/teacher/group']"
-        [routerLinkActive]="['link-active']"
-        (click)="stateScreen.displayMatch == false ? sidebarChange() : ''"
-      >
-        <span style="display: inline-block;width: 30px;">
-          <i class="fas fa-users"></i>
-        </span>
-        จัดการกลุ่มเรียน</a
-      >
-      <a
-        mat-list-item
-        href="javascript:void(0)"
-        *ngIf="localStorage.get('userlogin')['role'] != '4500'"
-        [routerLink]="['/teacher/store']"
-        [routerLinkActive]="['link-active']"
-        (click)="stateScreen.displayMatch == false ? sidebarChange() : ''"
-      >
-        <span style="display: inline-block;width: 30px;">
-          <i class="fas fa-database"></i>
-        </span>
-        จัดการคลังข้อสอบ</a
-      >
+        จัดการข้อมูล
+      </a>
       <a
         mat-list-item
         href="javascript:void(0)"
@@ -124,6 +56,7 @@
         </span>
         เปลี่ยนรหัสผ่าน
       </a>
+
       <a
         mat-list-item
         href="javascript:void(0)"
