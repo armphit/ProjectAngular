@@ -16,7 +16,7 @@
 </mat-form-field>
 <br /><br />
 
-<table class="table table-striped" *ngIf="datagroupchange1 != null">
+<table class="table table-striped " *ngIf="datagroupchange1 != null">
   <thead class="thead-dark">
     <tr>
       <th scope="col"></th>
@@ -50,7 +50,11 @@
         >
 
         <span>
-          <button mat-button color="warn">
+          <button
+            mat-button
+            color="warn"
+            (click)="deletegroup(i.study_group_id)"
+          >
             <mat-icon> delete </mat-icon>
           </button></span
         >
@@ -71,7 +75,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="insertGroupModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="insertGroupModalLabel">เพิ่มกลุ่มเรียน</h5>
         <button
           type="button"
           class="close"
@@ -84,18 +88,7 @@
       <div class="modal-body">
         <p>เพิ่มกลุ่มเรียน</p>
 
-        <label>State</label>
-        <select class="form-control" *ngIf="datamajor" style="width: 100%">
-          <option> โปรดเลือกสาขาวิชา </option>
-          <option
-            *ngFor="let i of datamajor; let x = index"
-            [value]="i.name_th"
-            change="namegroup"
-            >{{ i.name_th }}</option
-          >
-        </select>
-
-        <!-- <mat-form-field *ngIf="datamajor" tyle="width: 500%;">
+        <mat-form-field *ngIf="datamajor" style="width: 100%;">
           <mat-label>สาขาวิชา</mat-label>
           <mat-select value="{{ '' }}" #selectV>
             <mat-option>
@@ -109,25 +102,26 @@
               {{ i.name_th }}
             </mat-option>
           </mat-select>
-        </mat-form-field> -->
+        </mat-form-field>
         <br />
 
         <span> {{ namegroup }}</span
         >&nbsp;&nbsp;.&nbsp;&nbsp;
         <mat-form-field>
-          <input
-            matInput
-            placeholder="โปรดระบุรหัสกลุ่มเรียน"
-            #a
-            maxlength="5"
-          />
+          <input matInput placeholder="โปรดระบุกลุ่มเรียน" #a maxlength="5" />
         </mat-form-field>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="insertgroup(a.value)"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>

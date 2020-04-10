@@ -16,10 +16,12 @@
             </div>
             <div class="text-center mb-3">
               <h5>
-                <b>ระบบตรวจสอบการเขียนคำสั่งเอสคิวแอล</b>
+                <b>ระบบอาจารย์ที่ปรึกษา</b>
               </h5>
             </div>
-
+            <div class="mb-3">
+              <h6>*เฉพาะผู้ดูแลระบบ</h6>
+            </div>
             <div class="row justify-content-center">
               <div class="col-10 mb-3">
                 <div>
@@ -38,7 +40,7 @@
                   <mat-form-field>
                     <input
                       matInput
-                      placeholder="รผัสผ่าน (Password)"
+                      placeholder="รหัสผ่าน (Password)"
                       name="password"
                       type="password"
                       required
@@ -60,34 +62,29 @@
                     เข้าสู่ระบบ
                   </button>
                 </span>
-                <span style="margin: 0px 5px 0px 5px;">
-                  <button
-                    type="button"
-                    class="btn btn-link"
-                    data-toggle="modal"
-                    data-target="#modalForgetPassword"
-                  >
-                    ลืมรหัสผ่าน
-                  </button>
-                </span>
               </div>
 
-              <div class="mb-3">
-                <h6>หรือ</h6>
+              <div class="mb-3" align="left">
+                <h6>*เฉพาะอาจารย์และนักศึกษา</h6>
               </div>
 
               <div class="mb-3">
                 <span style="margin: 0px 5px 0px 5px;">
-                  <button type="button" class="btn btn-warning">
+                  <button type="button" class="btn btn-success">
                     เข้าสู่ระบบด้วยบัญชีอินเตอร์เน็ต มทร.อีสาน
                   </button>
                 </span>
               </div>
-
-              <p class="text-danger" style="margin: unset;">
-                * หากเข้าใช้งานครั้งแรก โปรดเข้าสู่ระบบด้วยบัญชีอินเตอร์เน็ต
-                มทร.อีสาน
-              </p>
+              <span style="margin: 0px 5px 0px 5px;">
+                <button
+                  type="button"
+                  class="btn btn-link"
+                  data-toggle="modal"
+                  data-target="#modalForgetPassword"
+                >
+                  ลืมรหัสผ่าน
+                </button>
+              </span>
             </div>
           </form>
         </div>
@@ -95,12 +92,12 @@
     </div>
   </div>
 </div>
-<nav class="navbar navbar-light bg-light fixed-bottom bg-white">
+<!-- <nav class="navbar navbar-light bg-light fixed-bottom bg-white">
   <span
     >&nbsp;&nbsp;Copyright © {{ getYear() }} สาขาวิชาวิศวกรรมคอมพิวเตอร์
     มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา
   </span>
-</nav>
+</nav> -->
 
 <!-- Modal ForgetPassword -->
 <div

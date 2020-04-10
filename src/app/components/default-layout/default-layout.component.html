@@ -40,7 +40,7 @@
         (click)="stateScreen.displayMatch == false ? sidebarChange() : ''"
       >
         <span style="display: inline-block;width: 30px;">
-          <i class="fas fa-key"></i>
+          <i class="fa fa-cog"></i>
         </span>
         จัดการข้อมูล
       </a>
@@ -52,9 +52,9 @@
         (click)="stateScreen.displayMatch == false ? sidebarChange() : ''"
       >
         <span style="display: inline-block;width: 30px;">
-          <i class="fas fa-key"></i>
+          <i class="fa fa-info-circle"></i>
         </span>
-        เปลี่ยนรหัสผ่าน
+        ข้อมูลนักศึกษา
       </a>
 
       <a
@@ -77,18 +77,18 @@
       "
       (click)="sidebarChange()"
     ></div>
-    <mat-toolbar class="fixed-top">
+    <mat-toolbar class="fixed-top" style="background-color: #673ab7;">
       <button type="button" mat-icon-button (click)="sidebarChange()">
         <mat-icon>menu</mat-icon>
       </button>
       <span *ngIf="stateScreen.displayMatch == true"
-        >&nbsp;&nbsp;ระบบตรวจสอบการเขียนคำสั่งเอสคิวแอล</span
+        >&nbsp;&nbsp;ระบบอาจารย์ที่ปรึกษา</span
       >
       <span *ngIf="stateScreen.displayMatch == false"
-        >&nbsp;&nbsp;SQL Checking</span
+        >&nbsp;&nbsp;Advisor System</span
       >
     </mat-toolbar>
-    <div style="padding-top:45px;">
+    <div style="padding-top:50px;">
       <router-outlet></router-outlet>
     </div>
   </div>

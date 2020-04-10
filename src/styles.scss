@@ -9,7 +9,7 @@ body {
 }
 
 * {
-  font-family: "Prompt", sans-serif !important;
+  font-family: "K2D", sans-serif !important;
 }
 
 h1,
@@ -41,4 +41,9 @@ h6 {
 
 .mat-list-item {
   height: 40px !important;
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 99999 !important;
 }

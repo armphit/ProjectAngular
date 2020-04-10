@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert.service";
 import { HttpService } from "src/app/services/http.service";
 import { AppService } from "src/app/services/app.service";
+import { async } from "q";
 
 @Component({
   selector: "app-group",
@@ -14,6 +15,9 @@ export class GroupComponent implements OnInit {
   public datagroupchange1: any = null;
   public datamajor: any = null;
   public namegroup: any = "ไม่ได้เลือก";
+  public acronym_addgroup: any = null;
+  public code_addgroup: any = null;
+
   constructor(
     public localStorage: LocalstorageService,
     private router: Router,
@@ -74,9 +78,61 @@ export class GroupComponent implements OnInit {
     }
   };
 
-  // public namegroupch(acronym: any) {
-  //   this.namegroup = acronym;
+  public namegroupch(acronym: any, code: any, name_th: any) {
+    this.namegroup = acronym;
+    this.code_addgroup = code;
 
-  //   console.log(acronym);
-  // }
+    console.log(code);
+  }
+
+  public insertgroup(a) {
+    study_group_name: this.namegroup + "." + a;
+    mj_code: this.code_addgroup;
+
+    this.alert
+      .confirmAlert("คุณแน่ใจที่จะเพิ่มกลุ่มเรียน ?")
+      .then(async (value: any) => {
+        if (value) {
+          let getData: any = await this.http.get(
+            "admin/insertgroup/" +
+              this.namegroup +
+              "." +
+              a +
+              "/" +
+              this.code_addgroup
+          );
+          console.log(getData);
+
+          if (getData.connect) {
+            if (getData.value.result == true) {
+              this.alert.alert("success", "เพิ่มข้อมูลสำเร็จ");
+              this.getGroup();
+            } else {
+              this.alert.alert("error", "ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+            }
+          } else {
+          }
+        }
+      });
+  }
+
+  public deletegroup(study_group_id: any) {
+    this.alert.confirmAlert("ลบรายการนี้หรือไม่").then(async (value: any) => {
+      if (value) {
+        let getData: any = await this.http.get(
+          "admin/ondeletegroup/" + study_group_id
+        );
+        console.log(getData);
+        if (getData.connect) {
+          if (getData.value.result == true) {
+            this.alert.alert("success", "ลบข้อมูลสำเร็จ");
+            this.getGroup();
+          } else {
+            this.alert.alert("error", "ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+          }
+        } else {
+        }
+      }
+    });
+  }
 }
